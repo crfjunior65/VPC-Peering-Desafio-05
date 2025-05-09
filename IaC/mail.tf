@@ -1,4 +1,4 @@
-# providers.tf
+
 terraform {
   required_providers {
     aws = {
@@ -6,6 +6,7 @@ terraform {
       version = "~> 5.0"
     }
   }
+  required_version = ">= 1.5.0"
 }
 
 provider "aws" {
@@ -17,6 +18,7 @@ provider "aws" {
   alias  = "sao_paulo"
   region = "sa-east-1"
 }
+
 
 # vpc.tf
 module "vpc_virginia" {
@@ -195,9 +197,11 @@ resource "aws_instance" "sao_paulo_ec2" {
 
 # outputs.tf
 output "virginia_ec2_public_ip" {
-  value = aws_instance.virginia_ec2.public_ip
+  description = "value of the public IP of the EC2 instance in Virginia"
+  value       = aws_instance.virginia_ec2.public_ip
 }
 
 output "sao_paulo_ec2_public_ip" {
-  value = aws_instance.sao_paulo_ec2.public_ip
+  description = "value of the public IP of the EC2 instance in Sao Paulo"
+  value       = aws_instance.sao_paulo_ec2.public_ip
 }

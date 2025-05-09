@@ -1,0 +1,10 @@
+repos:
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.81.0  # Use a versão mais recente
+    hooks:
+      - id: terraform_fmt          # Formata o código Terraform
+      - id: terraform_validate     # Valida a sintaxe
+      - id: terraform_docs         # Gera/atualiza a documentação
+        args: ["--args=--output-file README.md --output-mode inject"]
+        args: ["--args=--lockfile=false"]  # Opcional: evita criar arquivo .terraform.lock.hcl
+
